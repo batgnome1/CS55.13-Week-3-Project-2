@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
+import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css';
  
 export default function Home() {
@@ -13,8 +14,7 @@ export default function Home() {
         <p>I am Andrew. I like coffee, cats, and spooky things</p>
         {/* Sample website description with Next.js tutorial link */}
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          <Link href="/posts/first-post">Check out the first post!</Link>
         </p>
       </section>
     </Layout>
