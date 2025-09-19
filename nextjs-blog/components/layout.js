@@ -1,21 +1,28 @@
+// Import Next.js components for head management, image optimization, and routing
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
+
+// Import CSS modules for component styling
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
  
+// Define site author name and title constants
 const name = 'Andrew Mayfield';
 export const siteTitle = 'Next.js Sample Website';
  
+// Layout component that wraps all pages with consistent header and navigation
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
+      {/* Head component for managing page metadata and SEO */}
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
         />
+        {/* Open Graph meta tags for social media sharing */}
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -25,8 +32,10 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      {/* Header section with conditional rendering based on home prop */}
       <header className={styles.header}>
         {home ? (
+          // Home page layout: larger profile image and main heading
           <>
             <Image
               priority
@@ -39,6 +48,7 @@ export default function Layout({ children, home }) {
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
+          // Non-home page layout: smaller profile image with link and secondary heading
           <>
             <Link href="/">
               <Image
@@ -58,7 +68,9 @@ export default function Layout({ children, home }) {
           </>
         )}
       </header>
+      {/* Main content area where page content is rendered */}
       <main>{children}</main>
+      {/* Back to home link - only shown on non-home pages */}
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">← Back to home</Link>
